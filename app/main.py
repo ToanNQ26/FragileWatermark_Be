@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from app.routes import embed, verify, dct
+from app.routes import embed, verify, dct, block_dct
 
 app = FastAPI()
 
@@ -22,3 +22,4 @@ app.mount("/storage", StaticFiles(directory="storage"), name="storage")
 app.include_router(embed.router)
 app.include_router(verify.router)
 app.include_router(dct.router)
+app.include_router(block_dct.router, prefix="/block") 
